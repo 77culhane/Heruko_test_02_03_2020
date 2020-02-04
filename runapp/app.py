@@ -46,12 +46,20 @@ app = Flask(__name__)
 session = Session(engine)
 
 @app.route("/")
-def home():
-    return render_template("index.html")
+def landing():
+    return render_template("home.html")
 
-@app.route("/bars")
+@app.route("/home.html")
+def home():
+    return render_template("home.html")
+
+@app.route("/maps.html")
+def index():
+    return render_template("maps.html")
+
+@app.route("/bars.html")
 def bars():
-    return render_template("barpage.html")
+    return render_template("bars.html")
 
 
 @app.route("/runquery")
