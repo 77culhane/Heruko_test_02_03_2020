@@ -53,6 +53,11 @@ session = Session(engine)
 def home():
     return render_template("index.html")
 
+@app.route("/bars")
+def bars():
+    return render_template("barpage.html")
+
+
 @app.route("/runquery")
 def runquery():
     #query dataset
