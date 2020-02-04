@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- CSS Stylesheets with Relative Paths -->
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>BAR PAGE</title>
+
+  <!-- This line is money! It points your HTML to the CSS file. -->
+  <!-- Notice the "relative" pathway? It matches a file inside our current directory's "assets" folder. Open it to see our style rules. -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+
+            <a class="navbar-brand" href="landingpage.html">View Sentiment by Location</a>
+          </div>                           
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="barpage.html"><span class="glyphicon glyphicon-list-alt"></span> Compare Sentiment Regarding Candidates</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Filter Search</div>
+                    <div class="panel-body">
+                      <form>
+                        <div class="form-group">
+                          <ul class="list-group" id="filters">
+                            <li class="filter list-group-item">
+                              <label for="date">ENTER A FILTER</label>
+                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="date">ENTER A FILTER</label>
+                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="date">ENTER A FILTER</label>
+                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="date">ENTER A FILTER</label>
+                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="date">ENTER A FILTER</label>
+                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="date">ENTER A FILTER</label>
+                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="date">ENTER A FILTER</label>
+                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                            </li>
+                          </ul>
+                        </div>
+                        <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                      </form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-3">
+                
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+    </div>
+</body>
