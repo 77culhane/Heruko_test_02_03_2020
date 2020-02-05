@@ -58,9 +58,13 @@ def landing():
 def home():
     return render_template("home.html")
 
-@app.route("/maps.html")
-def index():
-    return render_template("maps.html")
+@app.route("/maps1.html")
+def maps1():
+    return render_template("maps1.html")
+
+@app.route("/maps2.html")
+def maps2():
+    return render_template("maps2.html")
 
 @app.route("/bars.html")
 def bars():

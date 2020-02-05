@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!-- CSS Stylesheets with Relative Paths -->
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>TITLE_PAGE</title>
+
+  <!-- This line is money! It points your HTML to the CSS file. -->
+  <!-- Notice the "relative" pathway? It matches a file inside our current directory's "assets" folder. Open it to see our style rules. -->
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- Leaflet JS & CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+
+  <!-- d3 JS -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <!-- Marker Cluster JS & CSS -->
+  <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand glyphicon glyphicon-home" href="home.html">Home/About</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <a href="maps1.html"><span class="glyphicon glyphicon-map-marker"></span>Sentiment Mapping (Positive)</a>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <a href="maps2.html"><span class="glyphicon glyphicon-map-marker"></span>Sentiment Mapping (Negative)</a>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <a href="bars.html"><span class="glyphicon glyphicon-stats"></span>Compare Candidates</a>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <h3 style="color:#4aaaa5"> Currently Showing:</h3>
+      </div>
+      <div class="row">
+        <div id="table-area" class="">
+          <table border=2 id="header-table" class="table table-striped table-bordered table-hover table-condensed">  
+            <thead>
+              <tr>
+                <th class="table-head">Candidate</th>
+                <th class="table-head">Time Stamp</th>
+                <th class="table-head">Sentiment Score</th>
+                <th class="table-head">Location</th>
+                <th class="table-head">Geocodes</th>
+                <th class="table-head">Text of Tweet</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <h3 style="color:#4aaaa5"> Filter Options <hr/></h3>
+                <aside class="filters">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Filter Search</div>
+                      <div class="panel-body">
+                        <form>
+                          <div class="form-group">
+                            <ul class="list-group" id="filters">
+                              <li class="filter list-group-item">
+                                <label for="date">Candidate (lastname)</label>
+                                <input class="form-control" id="FILTERTYPE" type="text" placeholder="Sanders">
+                              </li>
+                              <li class="filter list-group-item">
+                                <label for="date">Location (State)</label>
+                                <input class="form-control" id="FILTERTYPE" type="text" placeholder="New Jersey">
+                              </li>
+                              <li class="filter list-group-item">
+                                <label for="date">Positive or Negative</label>
+                                <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                              </li>
+                              <li class="filter list-group-item">
+                                <label for="date">ENTER A FILTER</label>
+                                <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                              </li>
+                              <li class="filter list-group-item">
+                                <label for="date">ENTER A FILTER</label>
+                                <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                              </li>
+                              <li class="filter list-group-item">
+                                <label for="date">ENTER A FILTER</label>
+                                <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                              </li>
+                              <li class="filter list-group-item">
+                                <label for="date">ENTER A FILTER</label>
+                                <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
+                              </li>
+                            </ul>
+                          </div>
+                          <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                        </form>
+                      </div>
+                    </div>
+                  </aside>
+                  
+            </div>    
+            <div class="col-sm-9">
+                <h1 style="color:#4aaaa5"> Map Results </h1>
+                <hr/>
+                <div id="map">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API key -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
+
+    <!-- JS -->
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='js/just-crime.js')}}"></script> -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/us_states_data.js')}}"></script>
+    
+    <!-- Leaflet heatmap plugin-->
+    <script type="text/javascript" src="{{url_for('static', filename='js/leaflet-heat.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/logic.js')}}"></script>
+  </body>
+
+</html>

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -29,7 +29,10 @@
               <a class="navbar-brand glyphicon glyphicon-home" href="home.html">Home/About</a>
           </div>
           <ul class="nav navbar-nav navbar-right">
-            <a href="maps.html"><span class="glyphicon glyphicon-map-marker"></span>Sentiment Mapping</a>
+            <a href="maps1.html"><span class="glyphicon glyphicon-map-marker"></span>Sentiment Mapping (Positive)</a>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <a href="maps2.html"><span class="glyphicon glyphicon-map-marker"></span>Sentiment Mapping (Negative)</a>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <a href="bars.html"><span class="glyphicon glyphicon-stats"></span>Compare Candidates</a>
@@ -43,20 +46,27 @@
           <h3 style="color:#000000"> The 2020 Primaries are fast approaching! As the <hr/></h3>
       </div>
     <div class="row">
-      <div class="col-sm-6">
-        <h1 style="color:#4aaaa5"> Check out our Mapping Module for tweets about the candidates!</h1>
+      <div class="col-sm-4">
+        <h3 style="color:#4aaaa5"> Check out the country's postive sentiments regarding the candidates!</h3>
       </div>
-      <div class="col-sm-5">
-        <h2 style="color:#4aaaa5"> Compare the dominant sentiment regarding the candidates!</h2>
-    </div>
+      <div class="col-sm-4">
+        <h3 style="color:#4aaaa5"> Check out the country's negative sentiments regarding the candidates!</h3>
+      </div>
+      <div class="col-sm-4">
+        <h3 style="color:#4aaaa5"> Compare the dominant sentiment regarding the candidates!</h3>
+      </div>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <hr/>
-        <a href="maps.html"><img src="Resources/images/mapphoto.jpg" height="100%" width="100%"></a>
+        <a href="maps1.html"><img src="{{url_for('static', filename='images/mapphoto.jpg')}}" height="100%" width="100%"></a>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-4">
         <hr/>
-        <a href="bars.html"><img src="Resources/images/barphoto.jpg" height="100%" width="100%"></a>
+        <a href="maps2.html"><img src="{{url_for('static', filename='images/mapphoto.jpg')}}" height="100%" width="100%"></a>
+      </div>
+      <div class="col-sm-4">
+        <hr/>
+        <a href="bars.html"><img src="{{url_for('static', filename='images/barphoto.jpg')}}" height="100%" width="100%"></a>
       </div>
     </div>
 </div>

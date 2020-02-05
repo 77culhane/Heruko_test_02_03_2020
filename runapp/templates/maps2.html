@@ -7,13 +7,14 @@
 
   <!-- This line is money! It points your HTML to the CSS file. -->
   <!-- Notice the "relative" pathway? It matches a file inside our current directory's "assets" folder. Open it to see our style rules. -->
-  <link rel="stylesheet" type="text/css" href="style.css">
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <link rel="stylesheet" href="./static/css/style.css" />
-
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+  
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <!-- jQuery library -->
@@ -37,7 +38,7 @@
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
 
   <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -46,7 +47,10 @@
               <a class="navbar-brand glyphicon glyphicon-home" href="home.html">Home/About</a>
           </div>
           <ul class="nav navbar-nav navbar-right">
-            <a href="maps.html"><span class="glyphicon glyphicon-map-marker"></span>Sentiment Mapping</a>
+            <a href="maps1.html"><span class="glyphicon glyphicon-map-marker"></span>Sentiment Mapping (Positive)</a>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <a href="maps2.html"><span class="glyphicon glyphicon-map-marker"></span>Sentiment Mapping (Negative)</a>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <a href="bars.html"><span class="glyphicon glyphicon-stats"></span>Compare Candidates</a>
@@ -93,7 +97,7 @@
                                 <input class="form-control" id="FILTERTYPE" type="text" placeholder="New Jersey">
                               </li>
                               <li class="filter list-group-item">
-                                <label for="date">ENTER A FILTER</label>
+                                <label for="date">Positive or Negative</label>
                                 <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
                               </li>
                               <li class="filter list-group-item">
@@ -139,7 +143,7 @@
     
     <!-- Leaflet heatmap plugin-->
     <script type="text/javascript" src="{{url_for('static', filename='js/leaflet-heat.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='js/logic.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/logic2.js')}}"></script>
   </body>
 
 </html>
