@@ -22,7 +22,11 @@ import pandas as pd
 
 # Import your config
 if is_heroku == False:
-    from config import remote_db_endpoint, remote_db_port, remote_gwsis_dbname, remote_gwsis_dbuser, remote_gwsis_dbpwd
+    remote_db_endpoint = 'codingbootcamp.cnm4q1bfp1uz.us-east-2.rds.amazonaws.com'
+    remote_db_port = 3306
+    remote_gwsis_dbname = 'GW_SIS'
+    remote_gwsis_dbuser = 'admin'
+    remote_gwsis_dbpwd = 'newpassword'
 else:
     remote_db_endpoint = os.environ.get('remote_db_endpoint')
     remote_db_port = os.environ.get('remote_db_port')
@@ -37,7 +41,7 @@ engine = create_engine(f"mysql://{remote_gwsis_dbuser}:{remote_gwsis_dbpwd}@{rem
 # Set up SQL Alchemy connection and classes
 Base = automap_base() # Declare a Base using `automap_base()`
 Base.prepare(engine, reflect=True) # Use the Base class to reflect the database tables
-sqlkey = Base.classes.geo_testing2
+sqlkey = Base.classes.geo_sentiment
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -69,9 +73,34 @@ def runquery():
     
     df = pd.DataFrame(results, columns=['ID', 'User_Name', 'Tag', 'Time_Stamp', 'Text_of_Tweet', 'Compound_Score', 'Positive_Score', 'Neutral_Score', 'Negative_Score', 'Location', 'Geocodes'])
     #export to .csv
+    #json_string = df.to_json()
+    #import json
+    #json_string = json.dumps(df_dict)
+    #print(json_string)
+    
+    transforming_columns = [df['Compound_Score'], df['Positive_Score'], df['Neutral_Score'], df['Negative_Score']]
+    transformed_list = []
+    for column in transforming_columns:
+        thislist = column.to_list()
+        newlist = []
+        for item in thislist:
+            item = item*100
+            item = int(item)
+            newlist.append(item)
+        transformed_list.append(newlist)
+    com_df = pd.DataFrame({"Compound_Score":transformed_list[0]})
+    pos_df = pd.DataFrame({"Positive_Score":transformed_list[1]})
+    neut_df = pd.DataFrame({"Neutral_Score":transformed_list[2]})
+    neg_df = pd.DataFrame({"Negative_Score":transformed_list[3]})
+    
+    df = pd.DataFrame({"ID":df["ID"], 'User_Name':df['User_Name'], 'Tag':df['Tag'], 'Time_Stamp':df['Tag'],
+                       'Text_of_Tweet':df['Text_of_Tweet'], "Compound_Score":com_df["Compound_Score"],
+                       "Positive_Score":pos_df["Positive_Score"], "Neutral_Score":neut_df["Neutral_Score"],
+                       "Negative_Score":neg_df["Negative_Score"], 'Location':df['Location'], 'Geocodes':df['Geocodes']})
+    
     df_dict = df.to_dict()
     import json
-    json_string = json.dumps(df_dict)
-    return json_string
+    json_var = json.dumps(df_dict)
+    return json_var
 if __name__ == "__main__":
     app.run(debug=True)
