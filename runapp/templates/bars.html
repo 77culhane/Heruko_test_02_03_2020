@@ -42,63 +42,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Filter Search</div>
-                    <div class="panel-body">
-                      <form>
-                        <div class="form-group">
-                          <ul class="list-group" id="filters">
-                            <li class="filter list-group-item">
-                              <label for="date">ENTER A FILTER</label>
-                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
-                            </li>
-                            <li class="filter list-group-item">
-                              <label for="date">ENTER A FILTER</label>
-                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
-                            </li>
-                            <li class="filter list-group-item">
-                              <label for="date">ENTER A FILTER</label>
-                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
-                            </li>
-                            <li class="filter list-group-item">
-                              <label for="date">ENTER A FILTER</label>
-                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
-                            </li>
-                            <li class="filter list-group-item">
-                              <label for="date">ENTER A FILTER</label>
-                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
-                            </li>
-                            <li class="filter list-group-item">
-                              <label for="date">ENTER A FILTER</label>
-                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
-                            </li>
-                            <li class="filter list-group-item">
-                              <label for="date">ENTER A FILTER</label>
-                              <input class="form-control" id="FILTERTYPE" type="text" placeholder="FILTERSAMPLE">
-                            </li>
-                          </ul>
-                        </div>
-                        <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
-                      </form>
-                    </div>
-                  </div>
+          <div class="col-xs-12">
+            <div id="plot">
+              <script src="{{url_for('static', filename='js/plots.js')}}"></script>
             </div>
-        </div>
-        <div class="row">
-
-            <div class="col-sm-3">
-                
-            </div>
-            <div class="col-sm-3">
-
-            </div>
-            <div class="col-sm-3">
-
-            </div>
-            <div class="col-sm-3">
-
-            </div>
+          </div>
         </div>
     </div>
 </body>
