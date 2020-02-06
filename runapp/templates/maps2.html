@@ -60,33 +60,29 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <h3 style="color:#4aaaa5"> Filter Options <hr/></h3>
+                <h3 style="color:#4aaaa5"> About This Set <hr/></h3>
                 <aside class="filters">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">Filter Search</div>
-                      <div class="panel-body">
-                        <form>
-                          <div class="form-group">
-                            <ul class="list-group" id="filters">
-                              <li class="filter list-group-item">
-                                <label for="date">Candidate</label>
-                                <input class="form-control" id="candidate" type="text" placeholder="Bernie/Warren/Biden/Yang">
-                              </li>
-                              <li class="filter list-group-item">
-                                <label for="date">Sentiment Score</label>
-                                <input class="form-control" id="compoundscore" type="text" placeholder="Postive/Negative">
-                              </li>
-                            </ul>
-                          </div>
-                          <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
-                        </form>
-                      </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Conversational Sentiment</div>
+                    <div class="panel-body">
+                      <form>
+                        <div class="form-group">
+                          <ul class="list-group" id="filters">
+                            <li class="filter list-group-item">
+                              <label>We ran the tweets we collected through a sentiment analysis program: it assigned each tweet a sentiment value between -100 (negative feelings) and +100 (positive feelings). </label>
+                              <label> </label>
+                              <label>Each state's average sentimental value can be seen here.</label>
+                            </li>
+                          </ul>
+                        </div>
+                      </form>
                     </div>
+                  </div>
                   </aside>
                   
             </div>    
             <div class="col-sm-9">
-                <h1 style="color:#4aaaa5"> Map Results </h1>
+                <h1 style="color:#4aaaa5"> GEO-Sentiment: How do they feel? </h1>
                 <hr/>
                 <div id="map">
                 </div>
